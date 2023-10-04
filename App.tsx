@@ -8,14 +8,11 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import Navigation from './src/navigation';
-import {FormProvider} from './src/formContext';
 
 function App(): JSX.Element {
   return (
     <SafeAreaView style={styles.container}>
-      <FormProvider>
-        <Navigation />
-      </FormProvider>
+      <Navigation />
     </SafeAreaView>
   );
 }
