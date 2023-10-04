@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -6,14 +6,7 @@ import {
   TextInput,
   StyleSheet,
 } from 'react-native';
-
-type FormShape = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber: string;
-  address: string;
-};
+import {FormShape, emptyForm, useFormState} from '../state';
 
 const camelCaseToWords = (str: string) => {
   return str
@@ -39,19 +32,12 @@ const Input = (props: {
   );
 };
 
-const emptyForm = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  phoneNumber: '',
-  address: '',
-};
 const keys = Object.keys(emptyForm);
 keys.splice(0, 0, 'personalInformation');
 keys.splice(3, 0, 'contactInformation');
 
 const Form = () => {
-  const [formData, setFormData] = useState<FormShape>(emptyForm);
+  const {formData, setFormData} = useFormState();
 
   const handleSubmit = () => {
     console.log('submitting', formData);
