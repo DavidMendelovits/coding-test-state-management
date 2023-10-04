@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -6,6 +6,7 @@ import {
   TextInput,
   StyleSheet,
 } from 'react-native';
+import {useFormContext} from '../formContext';
 
 type FormShape = {
   firstName: string;
@@ -51,7 +52,7 @@ keys.splice(0, 0, 'personalInformation');
 keys.splice(3, 0, 'contactInformation');
 
 const Form = () => {
-  const [formData, setFormData] = useState<FormShape>(emptyForm);
+  const {formData, setFormData} = useFormContext();
 
   const handleSubmit = () => {
     console.log('submitting', formData);
