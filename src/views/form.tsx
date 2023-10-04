@@ -64,11 +64,14 @@ const Form = () => {
       {keys.map(key => {
         if (key === 'personalInformation' || key === 'contactInformation') {
           return (
-            <Text style={styles.sectionHeader}>{camelCaseToWords(key)}</Text>
+            <Text key={key} style={styles.sectionHeader}>
+              {camelCaseToWords(key)}
+            </Text>
           );
         }
         return (
           <Input
+            key={key}
             label={key}
             value={formData[key as keyof FormShape]}
             onChangeText={text => setFormData({...formData, [key]: text})}
@@ -86,6 +89,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: '30%',
+    marginHorizontal: '4%',
     gap: 10,
   },
   input: {
